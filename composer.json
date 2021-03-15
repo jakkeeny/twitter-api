@@ -1,0 +1,22 @@
+{
+    "name": "jakkeeny/twitter-api",
+    "description": "A laravel compatible version of the j7mbo twitter api",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Jak",
+            "email": "jakkeeny@gmail.com"
+        }
+    ],
+    "require": {
+        "ext-curl": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.5,>=4.5.1"
+    },
+    "autoload": {
+        "classmap": [
+            "src/TwitterAPI.php"
+        ]
+    }
+}
