@@ -83,7 +83,7 @@ class TwitterAPI
     {
         if (!function_exists('curl_init'))
         {
-            throw new RuntimeException('TwitterAPIExchange requires cURL extension to be loaded, see: http://curl.haxx.se/docs/install.html');
+            throw new \RuntimeException('TwitterAPIExchange requires cURL extension to be loaded, see: http://curl.haxx.se/docs/install.html');
         }
 
         if (!isset($settings['oauth_access_token'])
@@ -91,7 +91,7 @@ class TwitterAPI
             || !isset($settings['consumer_key'])
             || !isset($settings['consumer_secret']))
         {
-            throw new InvalidArgumentException('Incomplete settings passed to TwitterAPIExchange');
+            throw new \InvalidArgumentException('Incomplete settings passed to TwitterAPIExchange');
         }
 
         $this->oauth_access_token = $settings['oauth_access_token'];
@@ -113,7 +113,7 @@ class TwitterAPI
     {
         if (!is_null($this->getGetfield()))
         {
-            throw new Exception('You can only choose get OR post fields (post fields include put).');
+            throw new \Exception('You can only choose get OR post fields (post fields include put).');
         }
 
         if (isset($array['status']) && substr($array['status'], 0, 1) === '@')
@@ -153,7 +153,7 @@ class TwitterAPI
     {
         if (!is_null($this->getPostfields()))
         {
-            throw new Exception('You can only choose get OR post / post fields.');
+            throw new \Exception('You can only choose get OR post / post fields.');
         }
 
         $getfields = preg_replace('/^\?/', '', explode('&', $string));
@@ -208,7 +208,7 @@ class TwitterAPI
     {
         if (!in_array(strtolower($requestMethod), array('post', 'get', 'put', 'delete')))
         {
-            throw new Exception('Request method must be either POST, GET or PUT or DELETE');
+            throw new \Exception('Request method must be either POST, GET or PUT or DELETE');
         }
 
         $consumer_key              = $this->consumer_key;
@@ -277,7 +277,7 @@ class TwitterAPI
     {
         if (!is_bool($return))
         {
-            throw new Exception('performRequest parameter must be true or false');
+            throw new \Exception('performRequest parameter must be true or false');
         }
 
         $header =  array($this->buildAuthorizationHeader($this->oauth), 'Expect:');
